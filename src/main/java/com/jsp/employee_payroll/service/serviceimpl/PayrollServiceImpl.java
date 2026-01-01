@@ -46,4 +46,18 @@ public class PayrollServiceImpl implements PayrollService
 
 
     }
+
+    @Override
+    public List<PayrollResponse> getPayrollByEmployeeId(String employeeId)
+    {
+        Employee employee= employeeRepository.findById(employeeId).orElseThrow(()->new EmployeeAlreadyExist("No Employee Found"));
+        List<Payroll> payrolls= payrollRepository.findByEmployee_EmployeeId(employee.getEmployeeId());
+
+        if(payrolls.isEmpty())
+        {
+            throw  new PayrollException("No Data Present");
+        }
+
+        return payrollMapper.toResponseList(payrolls);
+    }
 }

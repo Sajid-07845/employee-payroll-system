@@ -10,4 +10,6 @@ public interface PayrollRepository  extends JpaRepository<Payroll,String>
 {
 
     List<Payroll> findByPayrollMonth(PayrollMonth payrollMonth);
+
+    List<Payroll> findByEmployee_EmployeeId(String employeeId);
 }

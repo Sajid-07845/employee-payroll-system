@@ -35,4 +35,11 @@ public class PayrollController
        return  responseStructureBuilder.success(HttpStatus.FOUND,"Fetched Successfully",payroll);
     }
 
+    @GetMapping("/api/payrolls/employees/{employeeId}")
+    public ResponseEntity<ResponseStructure<List<PayrollResponse>>> getPayrollByEmployeeId(@PathVariable String employeeId)
+    {
+        List<PayrollResponse> payroll= payrollService.getPayrollByEmployeeId(employeeId);
+        return responseStructureBuilder.success(HttpStatus.OK,"Found Successfully",payroll);
+    }
+
 }
