@@ -10,4 +10,6 @@ public interface PayrollService {
     PayrollRequest addPayroll(PayrollRequest payrollRequest);
 
     List<PayrollResponse> getPayrollByMonth(PayrollMonth month);
+
+    List<PayrollResponse> getPayrollByEmployeeId(String employeeId);
 }
